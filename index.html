@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Campus Create workshop registration practice project">
+  <title>Campus Create | Workshop Registration</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main class="page-shell">
+    <section class="intro" aria-labelledby="pageTitle">
+      <p class="eyebrow">Campus Create</p>
+      <h1 id="pageTitle">Find your next creative workshop</h1>
+      <p class="intro-copy">
+        Choose a practical session, reserve up to four seats and preview your registration.
+      </p>
+
+      <div class="feature-list" aria-label="Workshop benefits">
+        <article>
+          <span aria-hidden="true">01</span>
+          <div><strong>Learn by doing</strong><small>Short, practical sessions</small></div>
+        </article>
+        <article>
+          <span aria-hidden="true">02</span>
+          <div><strong>Bring your ideas</strong><small>Beginner-friendly activities</small></div>
+        </article>
+        <article>
+          <span aria-hidden="true">03</span>
+          <div><strong>Build together</strong><small>Meet other student creators</small></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="form-card" aria-labelledby="formTitle">
+      <div class="form-heading">
+        <p class="eyebrow">Registration</p>
+        <h2 id="formTitle">Reserve your place</h2>
+        <p>Fields marked <span aria-hidden="true">*</span> are required.</p>
+      </div>
+
+      <form id="registrationForm" novalidate>
+        <div class="form-grid">
+          <div class="field">
+            <label for="fullName">Full name <span aria-hidden="true">*</span></label>
+            <input id="fullName" name="fullName" type="text" required autocomplete="name"
+              aria-describedby="nameHint">
+            <small id="nameHint">Enter at least two characters.</small>
+          </div>
+
+          <!--  EMAIL -->
+
+          <div class="field">
+            <label for="email">Email address <span aria-hidden="true">*</span></label>
+            
+            
+            <!-- HTML1 (DONE): type="email" makes the browser check email syntax; "required" stops it being left blank. -->
+            
+            
+            <input id="email" name="email" type="email" required autocomplete="email"
+              aria-describedby="emailHint">
+            <small id="emailHint">Example: student@example.com</small>
+          </div>
+
+          <div class="field">
+            <label for="phone">Telephone</label>
+            <input id="phone" name="phone" type="tel" inputmode="numeric"
+              pattern="[0-9]{9,15}" autocomplete="tel" aria-describedby="phoneHint">
+            <small id="phoneHint">Optional: 9–15 digits without spaces.</small>
+          </div>
+
+          <!--  PORTFOLIO  -->
+          
+          <div class="field">
+            <label for="portfolio">Portfolio website</label>
+            
+            
+            <!-- HTML1 (DONE): type="url" checks for a complete URL. No "required", stays optional. -->
+            
+            
+            <input id="portfolio" name="portfolio" type="url" placeholder="https://example.com"
+              aria-describedby="portfolioHint">
+            <small id="portfolioHint">Optional: enter a complete URL.</small>
+          </div>
+
+          <div class="field">
+            <label for="course">Workshop <span aria-hidden="true">*</span></label>
+            <select id="course" name="course" required aria-describedby="courseHint">
+              <option value="">Choose a workshop</option>
+            </select>
+            <small id="courseHint">The choices will be created with JavaScript.</small>
+          </div>
+
+          <div class="field">
+            <label for="sessionDate">Preferred date <span aria-hidden="true">*</span></label>
+            
+            <!--    PREFFERED DATE  -->
+
+
+            <!-- HTML1 (DONE): type="date" gives a date picker;   "required" ( date must be chosen.)
+                 The minimum (today) in app.js. -->
+            
+            
+            
+                 <input id="sessionDate" name="sessionDate" type="date" required
+              aria-describedby="dateHint">
+            <small id="dateHint">Choose today or a future date.</small>
+          </div>
+
+          <div class="field">
+            <label for="seats">Number of seats <span aria-hidden="true">*</span></label>
+            
+            <!--    NUMBER OF SEATS  -->
+            
+            <!-- HTML1 (DONE): number input, 
+             required, (cannot be left blank)
+             whole numbers only from 1 to 4 (step="1" rejects 1.5). -->
+            
+            <input id="seats" name="seats" type="number" required min="1" max="4" step="1" value="1"
+              aria-describedby="seatsHint">
+            <small id="seatsHint">Choose a whole number from 1 to 4.</small>
+          </div>
+
+          <div class="field">
+            <label for="password">Practice password <span aria-hidden="true">*</span></label>
+            <input id="password" name="password" type="password" required minlength="10"
+              autocomplete="new-password" aria-describedby="passwordHint">
+            <small id="passwordHint">Use at least 10 characters. Do not use a real password.</small>
+          </div>
+
+          <div class="field full-width">
+            <label for="confirmPassword">Confirm practice password <span aria-hidden="true">*</span></label>
+            <input id="confirmPassword" name="confirmPassword" type="password" required
+              autocomplete="new-password" aria-describedby="confirmHint">
+            <small id="confirmHint">Enter the same practice password again.</small>
+          </div>
+        </div>
+
+        <label class="agreement" for="agree">
+          <input id="agree" name="agree" type="checkbox" required>
+          <span>I agree to use invented details for this classroom demonstration.</span>
+        </label>
+
+        <button type="submit">Preview registration</button>
+        <p id="feedback" class="feedback" role="status" aria-live="polite" hidden></p>
+      </form>
+    </section>
+  </main>
+</body>
+</html>
