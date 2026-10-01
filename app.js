@@ -9,18 +9,17 @@ const password = document.getElementById("password");
 const confirmPassword = document.getElementById("confirmPassword");
 const feedback = document.getElementById("feedback");
 
-// JS1 : an array holding the workshop names. Index 0 is "HTML Essentials",
-// and workshops.length is 3
+// JS1 (DONE): an array holding the workshop names. Index 0 is "HTML Essentials",
+// and workshops.length is now 4. To add a workshop later, just add another string here.
+// EXTENSION: "Accessibility Basics" is the fourth workshop; the loop below creates its option automatically.
 const workshops = [
-  "HTML Essentials", "CSS Studio", "JavaScript Lab"
+  "HTML Essentials", "CSS Studio", "JavaScript Lab", "Accessibility Basics"
 ];
 
-// Loop through the array: "workshop" holds one name per pass (3 passes in total).
-
+// Loop through the array: "workshop" holds one name per pass (4 passes in total).
 for (const workshop of workshops) {
   // A NEW <option> element is created on every pass, because one element
   // cannot be appended in several places; each choice needs its own.
-  
   const option = document.createElement("option");
   option.value = workshop;       // the value the form submits / course.value returns
   option.textContent = workshop; // the text the user sees (textContent is safe from HTML injection)
@@ -100,4 +99,30 @@ form.addEventListener("input", (event) => {
   if (event.target === fullName) fullName.setCustomValidity("");
   if (event.target === password) password.setCustomValidity("");
   if (event.target === confirmPassword) confirmPassword.setCustomValidity("");
+});
+
+// EXTENSION: Reset button logic.
+// The reset button (in index.html) is linked to this form, so clicking it fires
+// the form's "reset" event. The browser's built-in reset empties the text fields,
+// unticks the checkbox, returns the workshop list to its placeholder and puts
+// seats back to 1. It does NOT clear the items below, so we do those ourselves.
+form.addEventListener("reset", () => {
+  // 1. Clear every custom validity message (name, password, confirmation, etc.).
+  //    An empty string removes the error so the next attempt starts clean.
+  for (const field of form.elements) {
+    if (typeof field.setCustomValidity === "function") {
+      field.setCustomValidity("");
+    }
+  }
+
+  // 2. Remove the was-validated class so the red invalid borders disappear.
+  form.classList.remove("was-validated");
+
+  // 3. Clear and hide the feedback message, and remove its success/error styling.
+  feedback.textContent = "";
+  feedback.hidden = true;
+  feedback.className = "feedback";
+
+  // 4. Put the cursor back in the first field, ready for a new registration.
+  fullName.focus();
 });
