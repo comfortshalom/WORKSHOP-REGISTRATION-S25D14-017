@@ -9,17 +9,21 @@ const password = document.getElementById("password");
 const confirmPassword = document.getElementById("confirmPassword");
 const feedback = document.getElementById("feedback");
 
-// JS1 (DONE): an array holding the workshop names. Index 0 is "HTML Essentials",
+// JS1 (DONE): an array holding the workshop names.
 // and workshops.length is now 4. To add a workshop later, just add another string here.
-// EXTENSION: "Accessibility Basics" is the fourth workshop; the loop below creates its option automatically.
+
+// EXTENSION: "Python Basics" is the fourth workshop;
 const workshops = [
-  "HTML Essentials", "CSS Studio", "JavaScript Lab", "Accessibility Basics"
+  "HTML Essentials", "CSS Studio", "JavaScript Lab", "Python Basics"
 ];
 
 // Loop through the array: "workshop" holds one name per pass (4 passes in total).
 for (const workshop of workshops) {
+  
   // A NEW <option> element is created on every pass, because one element
   // cannot be appended in several places; each choice needs its own.
+ 
+ 
   const option = document.createElement("option");
   option.value = workshop;       // the value the form submits / course.value returns
   option.textContent = workshop; // the text the user sees (textContent is safe from HTML injection)
@@ -69,6 +73,7 @@ form.addEventListener("submit", (event) => {
   // reportValidity() tests every HTML constraint (required, type, min/max/step,
   // pattern, minlength) AND our custom messages, shows the browser's error bubble,
   // and returns true only if every control is valid. "!" means NOT.
+  
   if (!form.reportValidity()) {
     feedback.textContent = "Check the highlighted fields and try again.";
     feedback.classList.add("error");
@@ -78,6 +83,7 @@ form.addEventListener("submit", (event) => {
 
   // JS4 (DONE): seats.value is a STRING such as "2"; valueAsNumber is a real NUMBER (2).
   // A number is needed so that === 1 below compares like with like.
+  
   const seatCount = seats.valueAsNumber;
   let bookingType = ""; // "let" because its value is assigned below
 
